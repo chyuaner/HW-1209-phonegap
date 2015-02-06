@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>三角形</h1>
+            
+            <form>
+                <div id="input-area">
+                    a = <input type="number" id="text-num-a" />
+                    b = <input type="number" id="text-num-b" />
+                    c = <input type="number" id="text-num-c" />
+                    <input type="button" id="btn-cal" value="Go!" />
+                </div>
+                
+                <hr />
+                
+                <div id="result-area" />
+            </form>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            function cal() {
+                var mText_a = document.getElementById("text-num-a");
+                var mText_b = document.getElementById("text-num-b");
+                var mText_c = document.getElementById("text-num-c");
+                var mResult = document.getElementById("result-area");
+                
+                var a = parseFloat(mText_a.value);
+                var b = parseFloat(mText_b.value);
+                var c = parseFloat(mText_c.value);
+                
+                var area = 0, p = 0;
+                
+                p = a + b + c;
+                p = p / 2;
+                area = p * (p - a) * (p - b) * (p - c);
+                area = Math.sqrt(area);
+                
+                mResult.innerHTML = area;
+            }
+            
+            
+            app.initialize();
+            
+            window.onload = function() {
+                var mbtn_go = document.getElementById("btn-cal");
+                mbtn_go.onclick=cal;
+            }
+        </script>
+    </body>
+</html>
